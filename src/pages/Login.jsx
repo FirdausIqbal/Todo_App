@@ -91,7 +91,7 @@ const Login = ({isAuth}) => {
     <Container>
       <Wrapper>
         <Tittle>Login</Tittle>
-        <p>Welcome volks.</p>
+        <p>Welcome Volks.</p>
         {status ? <p style={{ color: "red" }}>Username or password incorrect</p> : null}
         <Form>
           <LoginInput name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
