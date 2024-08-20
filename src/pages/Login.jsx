@@ -74,7 +74,7 @@ const Login = ({isAuth}) => {
   const submitLogin = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", formData, {withCredentials: true})
+      const response = await axios.post("https://todo-backend-api-eta.vercel.app/auth/login", formData, {withCredentials: true})
       if(response.status === 200){
         isAuth(response.data)
       }
