@@ -27,7 +27,7 @@ function App() {
       console.log(error.message)
     }
   }
-
+console.log(process.env.ENV)
   useEffect(()=>{
     const cekAuth = async()=>{
       try {
