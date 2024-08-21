@@ -19,7 +19,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const logoutHandle = async()=>{
     try {
-      await axios.post("http://localhost:3001/auth/logout", {}, { withCredentials: true});
+      await axios.post("https://todo-backend-api-eta.vercel.app/auth/logout", {}, { withCredentials: true});
       localStorage.removeItem("user")
       window.location.reload()
     } catch (error) {
