@@ -27,6 +27,7 @@ function App() {
       console.log(error.message)
     }
   }
+  
   useEffect(()=>{
     const cekAuth = async()=>{
       try {
@@ -47,6 +48,7 @@ function App() {
     }, 10 * 60 * 1000);
     return ()=> clearInterval(intervalId)
   }, [user])
+
   return (
       <Router>
         <Routes>
