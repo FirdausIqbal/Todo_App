@@ -30,7 +30,7 @@ function App() {
   useEffect(()=>{
     const cekAuth = async()=>{
       try {
-        const res = await axios.get("http://localhost:3001/auth/cekauth", { withCredentials: true })
+        const res = await axios.get("https://todo-backend-api-eta.vercel.app/auth/cekauth", { withCredentials: true })
         if(Object.keys(user).length > 1 && !res.data.isAuthenticated){
           logoutHandle()
         } else {
