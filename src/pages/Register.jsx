@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import API_URL from '../api_url'
 
 const Container = styled.div`
     height: 100vh;
@@ -51,10 +52,10 @@ const Register = ({isAuth}) => {
     const handleRegister = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:3001/auth/register", formData, {withCredentials: true})
+            const response = await axios.post(`${API_URL}auth/register`, formData, {withCredentials: true})
             if (response.status === 200){
                 const {email, ...loginData} = formData;
-                const resLogin = await axios.post("http://localhost:3001/auth/login", loginData, { withCredentials: true });
+                const resLogin = await axios.post(`${API_URL}auth/login`, loginData, { withCredentials: true });
                 isAuth(resLogin.data)
             }
         } catch (error) {

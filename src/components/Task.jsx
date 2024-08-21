@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import API_URL from '../api_url'
 
 const Container = styled.div`
     background-color: #ffce8e;
@@ -64,7 +65,7 @@ const Task = ({dataTask, next}) => {
     }
     const handleSave = async()=>{
         try {
-            await axios.put(`http://localhost:3001/task/${dataTask.id}`, dataEdit, { withCredentials: true})
+            await axios.put(`${API_URL}task/${dataTask.id}`, dataEdit, { withCredentials: true})
             setIsEdit(false)
             // window.location.reload()
             next()
@@ -80,7 +81,7 @@ const Task = ({dataTask, next}) => {
     }
     const handleRemove = async() => {
         try {
-            await axios.delete(`http://localhost:3001/task/${dataTask.id}`, { withCredentials:true });
+            await axios.delete(`${API_URL}task/${dataTask.id}`, { withCredentials:true });
             next();
         } catch (error) {
             console.log(error.message)

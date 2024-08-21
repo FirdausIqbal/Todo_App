@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import axios from 'axios';
+import API_URL from './api_url';
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +20,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const logoutHandle = async()=>{
     try {
-      await axios.post("https://todo-backend-api-eta.vercel.app/auth/logout", {}, { withCredentials: true});
+      await axios.post(`${API_URL}auth/logout`, {}, { withCredentials: true});
       localStorage.removeItem("user")
       window.location.reload()
     } catch (error) {
@@ -30,7 +31,7 @@ function App() {
   useEffect(()=>{
     const cekAuth = async()=>{
       try {
-        const res = await axios.get("https://todo-backend-api-eta.vercel.app/auth/cekauth", { withCredentials: true })
+        const res = await axios.get(`${API_URL}auth/cekauth`, { withCredentials: true })
         if(Object.keys(user).length > 1 && !res.data.isAuthenticated){
           logoutHandle()
         } else {

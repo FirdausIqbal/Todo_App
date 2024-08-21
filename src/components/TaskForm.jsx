@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import API_URL from '../api_url'
 
 const Container = styled.div`
     margin-bottom: 2rem;
@@ -66,7 +67,7 @@ const TaskForm = ({ next }) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            await axios.post("http://localhost:3001/task/", dataForm, { withCredentials: true })
+            await axios.post(`${API_URL}task/`, dataForm, { withCredentials: true })
             setDataForm({
                 taskName: "",
                 contentTask: ""

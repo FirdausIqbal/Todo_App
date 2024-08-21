@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
-// import { EXdataTask } from "../data";
+import API_URL from "../api_url";
 
 const Body = styled.div`
   background-color: #ffffff;
@@ -37,7 +37,7 @@ const EmptyText = styled.p`
 const Tasks = () => {
   const [task, setTask] = useState([]);
   const [reload, setReload] = useState();
-  const request = "http://localhost:3001/task/user/all"
+
 
   const handleReload = ()=>{
     const setter = Math.floor(Math.random() * 10)
@@ -47,7 +47,7 @@ const Tasks = () => {
   useEffect(()=>{
     const getTask = async()=>{
       try {
-        const response = await axios.get(request, { withCredentials:true })
+        const response = await axios.get(`${API_URL}task/user/all`, { withCredentials:true })
         const filterResponse = response.data.map((item)=>{
           const {createdAt, updatedAt, ...data} = item;
           const date = new Date(updatedAt).toLocaleDateString()

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import API_URL from "../api_url";
 
 const Container = styled.div`
   height: 100vh;
@@ -74,7 +75,7 @@ const Login = ({isAuth}) => {
   const submitLogin = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("https://todo-backend-api-eta.vercel.app/auth/login", formData, {withCredentials: true})
+      const response = await axios.post(`${API_URL}auth/login`, formData, {withCredentials: true})
       if(response.status === 200){
         isAuth(response.data)
       }

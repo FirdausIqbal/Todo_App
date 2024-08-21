@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import API_URL from "../api_url";
 
 const Container = styled.div`
   padding: 2rem 4rem;
@@ -20,7 +21,7 @@ const Right = styled.div`
 const Header = ({data}) => {
   const logoutHandle = async()=>{
     try {
-      await axios.post("http://localhost:3001/auth/logout", {}, { withCredentials: true});
+      await axios.post(`${API_URL}auth/logout`, {}, { withCredentials: true});
       localStorage.removeItem("user")
       window.location.reload()
     } catch (error) {
