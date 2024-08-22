@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import API_URL from '../api_url'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     background-color: #ffce8e;
@@ -9,6 +10,9 @@ const Container = styled.div`
     border-radius: 10px;
     flex-basis: 40%;
     border-top-right-radius: 60px;
+    ${mobile({
+        flexBasis: '100%'
+    })}
 `
 const Title = styled.h4`
     font-size: 1rem;

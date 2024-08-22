@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import API_URL from '../api_url'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     margin-bottom: 2rem;
@@ -17,11 +18,17 @@ const Form = styled.form`
     padding: 2rem;
     box-shadow: 10px 10px 20px #c5c5c5;
     border-radius: 10px;
+    ${mobile({
+        width: '100%'
+    })}
 `
 const InputContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    ${mobile({
+        flexDirection: 'column'
+    })}
 `
 const InputTitle = styled.input`
     flex: 1;
@@ -38,6 +45,9 @@ const InputContent = styled.textarea`
 const SubmitContainer = styled.div`
     display: flex;
     justify-content: end;
+    ${mobile({
+        justifyContent: 'center'
+    })}
 `
 const Submit = styled.button`
     padding: 0.5rem;

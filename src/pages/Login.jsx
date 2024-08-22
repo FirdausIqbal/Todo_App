@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import API_URL from "../api_url";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 100vh;
@@ -49,15 +50,21 @@ const Tittle = styled.h1``;
 const InputContainer = styled.div`
   display: flex;
   gap: 1rem;
+  ${mobile({
+    flexDirection: 'column'
+  })}
 `
 
 const LoginInput = styled.input`
+  ${mobile({
+    width: '80%'
+  })}
   width: 50%;
   margin: 10px auto;
   padding: 0.6rem;
   border: 1px solid grey;
   border-radius: 5px;
-`;
+`
 
 const Login = ({isAuth}) => {
   const [formData, setFormData] = useState({

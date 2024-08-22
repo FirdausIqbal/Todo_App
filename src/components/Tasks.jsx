@@ -4,6 +4,7 @@ import axios from "axios";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
 import API_URL from "../api_url";
+import { mobile } from "../responsive";
 
 const Body = styled.div`
   background-color: #ffffff;
@@ -12,6 +13,9 @@ const Body = styled.div`
 
 const Container = styled.div`
   padding: 2rem 5rem;
+  ${mobile({
+        padding: '3rem 2rem'
+    })}
 `;
 
 const Title = styled.div`

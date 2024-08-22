@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import API_URL from '../api_url'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     height: 100vh;
@@ -15,6 +16,9 @@ const Wrapper = styled.div`
     padding: 3rem;
     background-color: white;
     border-radius: 1rem;
+    ${mobile({
+        width: '800%'
+    })}
 `
 const Form = styled.form`
     display: flex;
@@ -69,9 +73,9 @@ const Register = ({isAuth}) => {
             <Title>Register</Title>
             <Form>
                 <Input onChange={handleChange} name='username' type='text' placeholder='username' required/>
-                <Input onChange={handleChange} name='password' type='password' placeholder='password'/>
+                <Input onChange={handleChange} name='password' type='password' placeholder='password' required/>
                 <Input onChange={handleChange} name='email' type='email' placeholder='Email'/>
-                {errStatus ? <ErrorText>* {errStatus === 'Fields' ? "Kolom 'username' Tidak Boleh Kosong" : `${errStatus} sudah pernah digunakan` }</ErrorText> : null}
+                {errStatus ? <ErrorText>* {errStatus === 'Fields' ? "Kolom 'username & password' Tidak Boleh Kosong" : `${errStatus} sudah pernah digunakan` }</ErrorText> : null}
                 <Button onClick={handleRegister}>Register</Button>
             </Form>
         </Wrapper>
