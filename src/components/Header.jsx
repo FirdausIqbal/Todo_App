@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import API_URL from "../api_url";
@@ -8,12 +8,20 @@ const Container = styled.div`
   padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #00000037;
+  background-color: #2b2a2a;
+  color: white;
+  ${mobile({
+    display: 'block', 
+    fontSize: '2rem', 
+    position: 'fixed', 
+    width: '100%', 
+    padding: '1rem 3rem'
+  })}
 `;
 
 const Left = styled.div`
   ${mobile({
-    fontSize: '2rem'
+    fontSize: '2rem', display: 'none'
   })}
 `;
 const Right = styled.div`
@@ -28,6 +36,7 @@ const CostumBars = styled.div`
   })}
 `
 const Bars = styled.div`
+  cursor: pointer;
   display: none;
   font-size: 2rem;
   ${mobile({
@@ -35,8 +44,21 @@ const Bars = styled.div`
   })}
 `
 
+const Logout = styled.h5`
+  cursor: pointer;
+  font-size: 1rem;
+  ${mobile({
+    fontSize: '2rem'
+  })}
+`
+
+const Actived = styled.div`
+  display: block;
+`
+
 
 const Header = ({data}) => {
+  const [isActive, setIsActive] = useState(false);
   const logoutHandle = async()=>{
     try {
       await axios.post(`${API_URL}auth/logout`, {}, { withCredentials: true});
@@ -46,6 +68,11 @@ const Header = ({data}) => {
       console.log(error.message)
     }
   }
+
+  const handleClick = () => {
+    setIsActive((prev) => !prev);
+  }
+
   return (
     <Container>
       <Left>
@@ -53,13 +80,18 @@ const Header = ({data}) => {
       </Left>
       <Right >
         <CostumBars>
-          <h5 style={{ cursor: "pointer", fontSize: "1rem" }} onClick={logoutHandle}>Logout</h5>
+          <Logout onClick={logoutHandle}>Logout</Logout>
           <i style={{ fontSize: "1.4rem" }} className="fa-regular fa-user"></i>
         </CostumBars>
-        <Bars>
+        <Bars onClick={handleClick}>
           <i className="fa-solid fa-bars"></i>
         </Bars>
       </Right>
+      {isActive && 
+        <Actived>
+          <h3>Hello, {data.username}</h3>
+          <Logout onClick={logoutHandle}>Logout</Logout>
+        </Actived>}
     </Container>
   );
 };

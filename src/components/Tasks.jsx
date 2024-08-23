@@ -9,12 +9,15 @@ import { mobile } from "../responsive";
 const Body = styled.div`
   background-color: #ffffff;
   height: 100%;
+  ${mobile({
+    paddingTop: '5rem'
+  })}
 `;
 
 const Container = styled.div`
   padding: 2rem 5rem;
   ${mobile({
-        padding: '3rem 2rem'
+        padding: '3rem 2rem',
     })}
 `;
 
