@@ -51,11 +51,9 @@ const Logout = styled.h5`
     fontSize: '2rem'
   })}
 `
-
 const Actived = styled.div`
   display: block;
 `
-
 
 const Header = ({data}) => {
   const [isActive, setIsActive] = useState(false);
